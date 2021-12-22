@@ -30,7 +30,7 @@ public class ProfessorDAO {
 
     }
 
-    public void read(Professor professor) {
+    public ArrayList<Professor> read() {
 
         Connection connection = MySQLcon.iniciarconexao();
         PreparedStatement stmt = null;
@@ -43,19 +43,20 @@ public class ProfessorDAO {
             rs = stmt.executeQuery();
 
             while (rs.next()) {
-                Professor alun = new Professor();
+                Professor prof = new Professor();
                 
-                alun.setIdturma(rs.getInt("idturma"));
-                alun.setNome(rs.getString("nome"));
-                alun.setIdade(rs.getInt("idade"));
-                alun.setIdprofessor(rs.getInt("idprofessor"));
-                alun.setSalario(rs.getDouble("Salario"));
-                professors.add(alun);
+                prof.setIdturma(rs.getInt("idturma"));
+                prof.setNome(rs.getString("nome"));
+                prof.setIdade(rs.getInt("idade"));
+                prof.setIdprofessor(rs.getInt("idprofessor"));
+                prof.setSalario(rs.getDouble("Salario"));
+                professors.add(prof);
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return professors;
     }
 
     public void update(Professor professor) {
@@ -87,8 +88,25 @@ public class ProfessorDAO {
 
         try {
             
-            stmt = connection.prepareStatement("DELETE professor WHERE idprofessor = ?");
+            stmt = connection.prepareStatement("DELETE from professor WHERE idprofessor = ?");
             stmt.setInt(1, professor.getIdprofessor());
+            stmt.executeQuery();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            MySQLcon.encerrarcon(connection,stmt);
+        }
+    }
+    public void delete(int professor) {
+        Connection connection = MySQLcon.iniciarconexao();
+        PreparedStatement stmt = null;
+
+        try {
+            
+            stmt = connection.prepareStatement("DELETE from professor WHERE idprofessor = ?");
+            stmt.setInt(1, professor);
             stmt.executeQuery();
 
         } catch (Exception e) {

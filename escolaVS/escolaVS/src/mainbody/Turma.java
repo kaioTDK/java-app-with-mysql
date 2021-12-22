@@ -1,5 +1,11 @@
 package mainbody;
 
+import java.util.ArrayList;
+
+import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
+
+import conDAO.TurmaDAO;
+
 public class Turma {
     private int idturma;
     private String nomeTurma;
@@ -8,7 +14,10 @@ public class Turma {
 
     }
 
-
+    public Turma(int idTur,String nomeTur) {
+        this.nomeTurma = nomeTur;
+        this.idturma = idTur;
+    }
 
     public Turma(String nomeTur) {
         this.nomeTurma = nomeTur;
@@ -26,6 +35,5 @@ public class Turma {
     public void setIdturma(int idturma) {
         this.idturma = idturma;
     }
-
     
 }

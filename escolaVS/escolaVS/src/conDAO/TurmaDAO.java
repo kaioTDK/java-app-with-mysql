@@ -81,7 +81,7 @@ public class TurmaDAO {
 
         try {
             
-            stmt = connection.prepareStatement("DELETE turma WHERE idturma = ?");
+            stmt = connection.prepareStatement("DELETE from turma WHERE idturma = ?");
             stmt.setInt(1, turma.getIdturma());
             stmt.executeQuery();
 
@@ -92,6 +92,24 @@ public class TurmaDAO {
             MySQLcon.encerrarcon(connection,stmt);
         }
     }
+    public void delete(int turma) {
+        Connection connection = MySQLcon.iniciarconexao();
+        PreparedStatement stmt = null;
+
+        try {
+            
+            stmt = connection.prepareStatement("DELETE from turma WHERE idturma = ?");
+            stmt.setInt(1, turma);
+            stmt.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            MySQLcon.encerrarcon(connection,stmt);
+        }
+    }
+
 
 
 }

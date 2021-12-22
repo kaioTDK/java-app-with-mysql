@@ -7,11 +7,11 @@ public class Aluno extends Pessoa {
     private int idturma;
     private double notas;
     
-    public void Aluno() {
+    public Aluno() {
 
     }
 
-    public void Aluno(int idturma, String nome, int idade, double notas) {
+    public Aluno(int idturma, String nome, int idade, double notas) {
         this.setIdturma(idturma);
         this.setNome(nome);
         this.setIdade(idade);

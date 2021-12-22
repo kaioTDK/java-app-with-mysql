@@ -7,7 +7,17 @@ public class Professor extends Pessoa {
     private String nome;
     private int idade;
     private double salario;
+
+    public Professor() {
+        
+    }
     
+    public Professor(int idturma, String nome, int idade, double salario) {
+        this.idturma = idturma;
+        this.nome = nome;
+        this.idade = idade;
+        this.salario = salario;
+    }
     public int getIdpessoa() {
         return idpessoa;
     }

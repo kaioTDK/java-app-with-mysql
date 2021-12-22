@@ -30,7 +30,7 @@ public class AlunoDAO {
 
     }
 
-    public ArrayList<Aluno> read(Aluno aluno) {
+    public ArrayList<Aluno> read() {
 
         Connection connection = MySQLcon.iniciarconexao();
         PreparedStatement stmt = null;
@@ -127,8 +127,26 @@ public class AlunoDAO {
 
         try {
             
-            stmt = connection.prepareStatement("DELETE aluno WHERE idaluno = ?");
+            stmt = connection.prepareStatement("DELETE from aluno WHERE idaluno = ?");
             stmt.setInt(1, aluno.getIdaluno());
+            stmt.executeQuery();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            MySQLcon.encerrarcon(connection,stmt);
+        }
+    }
+
+    public void delete(int aluno) {
+        Connection connection = MySQLcon.iniciarconexao();
+        PreparedStatement stmt = null;
+
+        try {
+            
+            stmt = connection.prepareStatement("DELETE from aluno WHERE idaluno = ?");
+            stmt.setInt(1, aluno);
             stmt.executeQuery();
 
         } catch (Exception e) {
