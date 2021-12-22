@@ -5,9 +5,9 @@ import java.sql.*;
 public class MySQLcon {
     
     private static String DRIVER = "com.mysql.cj.jdbc.Driver" ;
-    private static String URL = "jdbc:mysql://localhost:3306/escola";
+    private static String URL = "jdbc:mysql://localhost:3306/";
     private static String USER = "admin";
-    private static String PASS = "Kaio2004";
+    private static String PASS = "";
 
     public static Connection iniciarconexao() {
 
